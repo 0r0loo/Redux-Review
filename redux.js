@@ -1,8 +1,8 @@
-export function createStore(updater) {
+export function createStore(reducer) {
   let state;
 
-  function doUpdate(data) {
-    state = updater(state, data);
+  function dispatch(data) {
+    state = reducer(state, data);
   }
 
   function getState() {
@@ -10,7 +10,7 @@ export function createStore(updater) {
   }
 
   return {
-    doUpdate,
+    dispatch,
     getState,
   };
 }
